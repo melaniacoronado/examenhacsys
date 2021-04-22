@@ -1,0 +1,20 @@
+{% extends "registro/layout.html" %}
+
+{% block title %}
+Editar Incidencia
+{% endblock %}
+ 
+{% block body %}
+
+<h2>Editar Acciones</h2>
+
+<div class="col-6">
+    <form action="{% url 'editarAcciones' incidencia_id %}" method="post">
+        {% csrf_token %}
+        {{ formAcciones.as_p }}
+        <br>
+        <button type="submit" class="btn btn-success">Guardar</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "registro/layout.html" %}
+
+{% block title %}
+Nueva Incidencia
+{% endblock %}
+ 
+{% block body %}
+
+<h2>Agregar Nueva Incidencia</h2>
+
+<div class="col-6">
+    <form action="{% url 'nuevaIncidencia' %}" method="post">
+        {% csrf_token %}
+        {{ formIncidencia.as_p }}
+        <br>
+        <button type="submit" class="btn btn-success">Enviar</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "registro/layout.html" %}
+
+{% block title %}
+Reporte de Incidencias
+{% endblock %}
+ 
+{% block body %}
+
+<h2>Reporte de Incidencias</h2>
+<hr>
+<div class="container-fluid">
+<br>
+<div class="card card-body">
+    <div class="row">
+        <form method="get">
+            <div class="col">
+                {{filtro.form}}
+                <button class="btn btn-primary" type="submit">Buscar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Acciones</th>
+                <th scope="col">Estatus</th>
+                <th scope="col">Cambio</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for incidencia in incidencias %}
+            <tr>
+                <th scope="row">{{incidencia.fecha}}</th>
+                <td>{{incidencia.descripcion}}</td>
+                <td>{{incidencia.autor}}</td>
+                <td>
+                    {{incidencia.acciones}}
+                    <a href="/editarAcciones/{{incidencia.id}}">Editar</a>
+                </td>
+                <td>
+                    <div class="row">
+                        <div class="col">
+                            {{incidencia.estatus}}
+                        </div>
+                        <div class="col">
+                            <a class="btn btn-secondary btn-sm" href="/cambiarEstatus/{{incidencia.id}}">Cambiar</a>
+                        </div>
+                    </div>
+                </td>
+                <td>{{incidencia.cambioEstatus}}</td>
+                <td>
+                    <a class="btn btn-danger" href="/eliminar/{{incidencia.id}}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
