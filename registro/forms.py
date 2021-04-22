@@ -4,8 +4,9 @@ from .models import Incidencia
 class IncidenciaForm(forms.ModelForm):
     class Meta:
         model = Incidencia
-        fields = ['autor','descripcion','acciones','estatus']
+        fields = ['fecha','autor','descripcion','acciones','estatus']
         labels = {
+            'fecha': 'Fecha',
             'autor': 'Autor',
             'descripcion': 'Descripción',
             'acciones': 'Acciones',
@@ -16,6 +17,7 @@ class IncidenciaForm(forms.ModelForm):
             ('Cerrado', 'Cerrado'),
         ]
         widgets = {
+            'fecha': forms.SelectDateWidget(years=range(2015, 2030)),
             'autor': forms.TextInput(attrs={'class':'form-control'}),
             'descripcion': forms.Textarea(attrs={'class':'form-control'}),
             'acciones': forms.Textarea(attrs={'class':'form-control'}),

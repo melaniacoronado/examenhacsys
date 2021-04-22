@@ -30,7 +30,7 @@ Reporte de Incidencias
                 <th scope="col">Autor</th>
                 <th scope="col">Acciones</th>
                 <th scope="col">Estatus</th>
-                <th scope="col">Cambio</th>
+                <th scope="col">Motivo</th>
                 <th scope="col">Opciones</th>
             </tr>
         </thead>
@@ -45,14 +45,12 @@ Reporte de Incidencias
                     <a href="/editarAcciones/{{incidencia.id}}">Editar</a>
                 </td>
                 <td>
-                    <div class="row">
                         <div class="col">
                             {{incidencia.estatus}}
                         </div>
                         <div class="col">
                             <a class="btn btn-secondary btn-sm" href="/cambiarEstatus/{{incidencia.id}}">Cambiar</a>
                         </div>
-                    </div>
                 </td>
                 <td>{{incidencia.cambioEstatus}}</td>
                 <td>
